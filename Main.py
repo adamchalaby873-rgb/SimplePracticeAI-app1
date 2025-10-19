@@ -248,65 +248,6 @@ st.markdown("""
             color: #2d3748;
         }
         
-        /* Prevent quiz description styling from applying to empty markdown elements */
-        div[data-testid="stMarkdownContainer"]:empty {
-            display: none !important;
-            background: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-        
-        /* Hide white boxes */
-        .stRadio > div:first-child {
-            display: none !important;
-        }
-        
-        div[data-testid="stVerticalBlock"] > div:has(.quiz-description) + div {
-            display: none !important;
-        }
-        
-        /* Hide empty white boxes above questions */
-        .question-card + div[data-testid="stVerticalBlock"] > div:empty,
-        div[data-testid="stVerticalBlock"] > div:empty {
-            display: none !important;
-        }
-        
-        .element-container:has(> .question-card) + .element-container:empty {
-            display: none !important;
-        }
-        
-        /* Dividers */
-        hr {
-            margin: 2rem 0;
-            border: none;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #667eea, transparent);
-        }
-        
-        /* Hide blank white boxes between questions */
-        hr + div:empty,
-        div:has(> hr) + div:empty {
-            display: none !important;
-        }
-        
-        .element-container:has(hr) + .element-container:empty {
-            display: none !important;
-        }
-        
-        /* Additional targeting for white boxes before question cards */
-        div[data-testid="stVerticalBlock"] > div[data-testid="element-container"]:empty {
-            display: none !important;
-        }
-        
-        div[data-testid="stHorizontalBlock"] + div:empty {
-            display: none !important;
-        }
-        
-        /* Hide any empty divs within the vertical block */
-        div[data-testid="stVerticalBlock"] > div:not(:has(*)) {
-            display: none !important;
-        }
-        
         /* Explanation text animation container */
         .explanation-box {
             background: rgba(102, 126, 234, 0.05);
@@ -329,8 +270,19 @@ st.markdown("""
 
 # Input section
 st.markdown("<div class='input-container'>", unsafe_allow_html=True)
-topic = st.text_input("📚 Enter a topic to generate a quiz for:", value="AP Hug Unit 2: Population and Migration Patterns and Processes")
-num_questions = st.number_input("🔢 Number of questions:", min_value=1, max_value=50, value=10, step=1)
+topic = st.text_input(
+    "📚 Enter a topic to generate a quiz for:", 
+    value="AP Hug Unit 2: Population and Migration Patterns and Processes"
+)
+
+# Slider for number of questions (max 5)
+num_questions = st.slider(
+    "🔢 Number of questions:", 
+    min_value=1, 
+    max_value=5, 
+    value=3,  # default
+    step=1
+)
 
 col1, col2 = st.columns(2)
 
