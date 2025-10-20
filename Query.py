@@ -31,7 +31,7 @@ def QueryAI(topic, numberQuestions):
             "messages": [
             {
                 "role": "user",
-                "content": f'''Generate a comprehensive practice quiz on {topic} based on AP Classroom practice exams. Include exactly {numberQuestions} questions. Each question must include "id", "question", "choices", "answer", and "explanation". Some questions should include real-life examples. And your allowed to have more than 4 answer choices.
+                "content": f'''Generate a comprehensive practice quiz on {topic} based on AP Classroom practice exams. Include exactly {numberQuestions} questions. Each question must include "id", "question", "choices", "answer", and "explanation". Some questions should include real-life examples but not all of them. And dont include real examples if told not to. And your allowed to have more than 4 answer choices.
 
                                 Output strictly valid JSON using double quotes for all keys and strings. Do not include any extra text outside the JSON (no "Here is...", no ``` or extra quotes). Do not include image-based questions. The final JSON must follow this format {jsonFormat}'''
             }
